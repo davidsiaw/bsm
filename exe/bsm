@@ -1,14 +1,16 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require 'bsm/bsm_parse'
 require 'json'
+require 'bsm'
 
-ast = JSON.parse(Bsm::BsmParse::compile_to_ast(ARGF.read))
+lines = []
 
-result = ''
-
-ast['hexlits'].each do |chr|
-  result << chr['_token'].to_i(16)
+ARGF.each_line do |line|
+  lines << line
 end
 
-print result
+content = lines.join(' ')
+gen = Bsm::Generator.new
+
+print gen.generate(content)
