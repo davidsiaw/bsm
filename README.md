@@ -72,6 +72,13 @@ puts g.generate('41 42 43')
 # will result in ABC
 ```
 
+### Also check out the markdown tests in the /spec directory!
+
+- https://github.com/davidsiaw/bsm/blob/master/spec/basic.md
+- https://github.com/davidsiaw/bsm/blob/master/spec/basic2.md
+- https://github.com/davidsiaw/bsm/blob/master/spec/cattable.md
+- https://github.com/davidsiaw/bsm/blob/master/spec/multiple_files.md
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` and `markspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
