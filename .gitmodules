@@ -1,0 +1,3 @@
+[submodule "bsm2"]
+	path = bsm2
+	url = https://github.com/davidsiaw/bsm2
