@@ -81,8 +81,14 @@ static VALUE generator_generate_raw(VALUE self, VALUE input)
         if (err)
         {
           VALUE msg = rb_str_new_cstr(bsm2_error_message(err));
+          VALUE exc = rb_funcall(eInvalidInput, rb_intern("new"), 1, msg);
+          rb_iv_set(exc, "@line", UINT2NUM(bsm2_error_line(err)));
+          rb_iv_set(exc, "@column", UINT2NUM(bsm2_error_column(err)));
+          rb_iv_set(exc, "@length", UINT2NUM(bsm2_error_length(err)));
+          rb_iv_set(exc, "@line_text",
+                    rb_str_new_cstr(bsm2_error_line_text(err)));
           bsm2_error_free(err);
-          rb_raise(eInvalidInput, "%" PRIsVALUE, msg);
+          rb_exc_raise(exc);
         }
         rb_raise(eInvalidInput, "bsm2_convert_line failed");
       }
