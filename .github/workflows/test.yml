@@ -40,6 +40,8 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+    - name: Build native extension
+      run: bundle exec rake compile
     - name: script
       run: |-
         cp -r spec ruby-${{ matrix.ruby }}-${{ matrix.os }}-spec

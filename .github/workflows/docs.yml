@@ -23,6 +23,8 @@ jobs:
       with:
         ruby-version: '3.4'
         bundler-cache: true
+    - name: Build native extension
+      run: bundle exec rake compile
     - name: Build documentation
       run: bundle exec yard
     - name: Upload documentation
