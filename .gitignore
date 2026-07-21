@@ -1,4 +1,5 @@
 /.bundle/
+/.bundler/
 /.yardoc
 /_yardoc/
 /coverage/
@@ -6,7 +7,22 @@
 /pkg/
 /spec/reports/
 /tmp/
+/.cache/
 
 # rspec failure tracking
 .rspec_status
-.pi-sessions/
+.DS_Store
+Thumbs.db
+Gemfile.lock
+
+# native ext build artifacts
+/lib/bsm/internal.so
+/ext/**/Makefile
+/ext/**/*.o
+/ext/**/*.so
+/ext/**/*.bundle
+/ext/**/mkmf.log
+
+# dev junk
+/bin.out
+/mise.toml

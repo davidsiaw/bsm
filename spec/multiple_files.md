@@ -3,13 +3,13 @@ Bsm caters to multiple files too. If you specify two files in order, they will b
 For file1.bsm,
 
 ```text file:file1.bsm
-44 45 46 47
+;44 45 46 47
 ```
 
 And file2.bsm
 
 ```text file:file2.bsm
-48 49 4A 4B
+;48 49 4A 4B
 ```
 
 We can execute bsm with this command

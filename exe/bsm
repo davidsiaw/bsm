@@ -4,13 +4,7 @@
 require 'json'
 require 'bsm'
 
-lines = []
-
-ARGF.each_line do |line|
-  lines << line
-end
-
-content = lines.join(' ')
+content = ARGF.to_a.join("\n")
 gen = Bsm::Generator.new
 
 print gen.generate(content)

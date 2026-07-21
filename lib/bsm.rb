@@ -1,29 +1,20 @@
 # frozen_string_literal: false
 
 require 'bsm/version'
+require 'bsm/internal'
 
 module Bsm
   class InvalidInput < StandardError; end
 
-  TWO_OCTET_REGEX = /^[0-9a-f]{2}$/i.freeze
-
-  # The generator class
+  # The generator class. Input is in bsm2 literate format: a line is data
+  # only if it starts with a semicolon (;); other lines are ignored.
   class Generator
-    def initialize(options = {})
-      @options = options
+    def initialize(_options = {})
+      @generator = GeneratorInternal.new
     end
 
     def generate(input)
-      tokens = input.split(/\s+/)
-      result = ''
-
-      tokens.each do |chr|
-        next if chr.length.zero?
-        raise InvalidInput, chr if chr !~ TWO_OCTET_REGEX
-
-        result << chr.to_i(16)
-      end
-      result
+      @generator.generate_raw(input)
     end
   end
 end

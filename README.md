@@ -2,10 +2,10 @@
 
 Bsm allows you to write binary files in a human-readable way.
 
-Bsm defines binary files like so:
+Bsm is a literate format: a line is data only if it starts with a semicolon (`;`). Every other line is ignored, so you can document your binary byte-by-byte while building it.
 
 ```
-41 42 43
+;41 42 43
 ```
 
 is interpreted as
@@ -14,12 +14,12 @@ is interpreted as
 ABC
 ```
 
-Bsm is very tolerant to spaces. Any whitespace is ignored as a separator. So if you have input like this:
+Bsm is very tolerant of whitespace between tokens. So if you have input like this:
 
 ```
-41
+;41
 
-42 43
+;42 43
 ```
 
 Bsm will still output
@@ -48,14 +48,14 @@ Or install it yourself as:
 
 ### As a command line tool
 
-Simply pipe a string of hexadecimals into bsm and receive the output in stdout
+Simply pipe literate text into bsm and receive the binary output on stdout:
 
 ```
-$ echo "41 42 43 0A" | bsm
+$ echo ";41 42 43 0A" | bsm
 ABC
 ```
 
-Alternatively, give it a filename. Assune you have a file called `inputfile`, with the contents `41 42 43 44`
+Alternatively, give it a filename. Assume you have a file called `inputfile`, with the contents `;41 42 43 44`:
 
 ```
 $ bsm inputfile
@@ -64,11 +64,11 @@ ABCD
 
 ### As a gem
 
-Simply instantiate `Bsm::Generator`
+Simply instantiate `Bsm::Generator`:
 
 ```ruby
 g = Bsm::Generator.new
-puts g.generate('41 42 43')
+puts g.generate(';41 42 43')
 # will result in ABC
 ```
 
@@ -78,6 +78,10 @@ puts g.generate('41 42 43')
 - https://github.com/davidsiaw/bsm/blob/master/spec/basic2.md
 - https://github.com/davidsiaw/bsm/blob/master/spec/cattable.md
 - https://github.com/davidsiaw/bsm/blob/master/spec/multiple_files.md
+
+## Documentation
+
+Detailed documentation is here: https://davidsiaw.github.io/bsm/
 
 ## Development
 
@@ -95,4 +99,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Bsm project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/davidsiaw/bsm/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Bsm project's codebases, issue trackers, chat rooms and mailing lists are expected to follow the [code of conduct](https://github.com/davidsiaw/bsm/blob/master/CODE_OF_CONDUCT.md).

@@ -1,0 +1,28 @@
+name: lint
+
+on:
+  pull_request:
+    types:
+    - opened
+    - synchronize
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.4'
+        bundler-cache: true
+    - uses: reviewdog/action-rubocop@b6d5e953a5fc0bf3ab65254e77730ea2174d6d6d # v2.22.0
+      with:
+        reporter: github-pr-review # Default is github-pr-check
+        skip_install: true
+        use_bundler: true
+        only_changed: true
+        fail_level: any

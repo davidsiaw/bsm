@@ -4,3 +4,15 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in bsm.gemspec
 gemspec
+
+# Specify development dependencies here and not in the gemspec
+gem 'markspec'
+gem 'rake'
+gem 'rake-compiler'
+gem 'rspec'
+gem 'rubocop'
+gem 'rubocop-rake'
+gem 'rubocop-rspec'
+gem 'rubocop-yard'
+gem 'yard'
+gem 'yard-rspec'
